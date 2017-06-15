@@ -81,9 +81,9 @@ page {
 
 /* 3 标签导航的样式 */
 .tag-list {
-    display: flex;
     position: fixed;
     background-color: #eff3f9;
+    white-space: nowrap;
 }
 
 .tag-item {
@@ -92,7 +92,7 @@ page {
     margin-bottom: 10rpx;
     font-family: sans-serif;
     font-size: 32rpx;
-    white-space: nowrap;
+    display: inline-block;
     border-top-left-radius: 80%;
     border-bottom-left-radius: 80%;
     border-top-right-radius: 30%;

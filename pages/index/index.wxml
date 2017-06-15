@@ -1,7 +1,7 @@
 <!--index.wxml-->
 
 <!-- 标签导航 -->
-<view class="tag-list">
+<scroll-view scroll-x class="tag-list">
     <view
     class="tag-item"
     bindtap="changeTag"
@@ -11,7 +11,7 @@
     wx:key="tags">
         {{tag}}
     </view>
-</view>
+</scroll-view>
 
 
 <view class="book-list">
