@@ -84,11 +84,14 @@ page {
     position: fixed;
     background-color: #eff3f9;
     white-space: nowrap;
+    width: 614rpx;
+    margin-left: 65rpx;
+    box-shadow:8rpx 4rpx 8rpx #c3d5f4;
 }
 
 .tag-item {
-    padding: 10rpx;
-    margin-left: 10rpx;
+    padding: 10rpx 18rpx;
+    margin-left: 4rpx;
     margin-bottom: 10rpx;
     font-family: sans-serif;
     font-size: 32rpx;
