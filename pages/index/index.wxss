@@ -1,0 +1,106 @@
+/* index.wxss
+
+目录：
+
+1 设置整个index页面的背景色
+
+2 这八项是设置content(flex布局的容器),cover,title,author,time,publisher,pages,price的位置
+
+3 标签导航的样式
+
+4 因标签悬浮导致和book-content重叠，所以设置大容器book-list
+
+*/
+
+
+
+/* 正文 */
+
+/* 1 设置整个index页面的背景色 */
+page {
+    background-color: #eff3f9;
+}
+
+
+/* 2 这八项是设置content(flex布局的容器),cover,title,author,time,publisher,pages,price的位置 */
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-family: sans-serif;
+    line-height: 1.7;
+    color: black;
+    width: 520rpx;
+    height: 950rpx;
+    margin: 13rpx 35rpx 25rpx 70rpx;
+    padding: 45rpx;
+    background-color: white;
+    box-shadow:8rpx 15rpx 8rpx #c3d5f4;
+
+}
+
+.cover {
+    width: 200rpx;
+    height: 300rpx;
+    margin-top: 60rpx;
+    border-style: groove;
+    box-shadow:8rpx 12rpx 8rpx #c3d5f4;
+}
+
+
+.title {
+    font-size: 45rpx;
+    margin-top: 60rpx;
+}
+
+.author {
+    font-size: 35rpx;
+    margin-top: 35rpx;
+
+}
+
+.time {
+    font-size: 33rpx;
+}
+
+.publisher {
+    font-size: 33rpx;
+    margin-top: 20rpx;
+}
+
+.pages {
+    font-size: 33rpx;
+}
+
+.price {
+    font-size: 31rpx;
+}
+
+
+/* 3 标签导航的样式 */
+.tag-list {
+    display: flex;
+    position: fixed;
+    background-color: #eff3f9;
+}
+
+.tag-item {
+    padding: 10rpx;
+    margin-left: 10rpx;
+    margin-bottom: 10rpx;
+    font-family: sans-serif;
+    font-size: 32rpx;
+    white-space: nowrap;
+    border-top-left-radius: 80%;
+    border-bottom-left-radius: 80%;
+    border-top-right-radius: 30%;
+    border-bottom-right-radius: 30%;
+    background-color: white;
+}
+
+/* 4 因标签悬浮导致和book-content重叠，所以设置大容器book-list */
+.book-list {
+    padding-top: 50rpx;
+}

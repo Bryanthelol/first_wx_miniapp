@@ -1,0 +1,46 @@
+{
+	"pages": [
+    "pages/index/index",
+    "pages/index/detail",
+    "pages/logs/logs",
+		"pages/setting/setting"
+  ],
+	"window": {
+		"navigationBarBackgroundColor": "#eff3f9",
+		"navigationBarTitleText": "北极森林的练习",
+		"navigationBarTextStyle": "black",
+		"backgroundTextStyle": "dark",
+		"backgroundColor": "#dee8f9",
+		"enablePullDownRefresh": false
+	},
+	"tabBar": {
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"text": "发现",
+				"iconPath": "images/faxianA.png",
+				"selectedIconPath": "images/faxianB.png"
+      },
+			{
+				"pagePath": "pages/logs/logs",
+				"text": "收藏",
+				"iconPath": "images/shoucangA.png",
+				"selectedIconPath": "images/shoucangB.png"
+      },
+			{
+				"pagePath": "pages/setting/setting",
+				"text": "设置",
+				"iconPath": "images/settingA.png",
+				"selectedIconPath": "images/settingB.png"
+			}
+    ],
+		"color": "#62779e",
+		"selectedColor": "#3577f2",
+		"borderStyle": "white",
+		"backgroundColor": "#ffffff"
+	},
+	"networkTimeout": {
+		"request": 60000
+	},
+	"debug": true
+}

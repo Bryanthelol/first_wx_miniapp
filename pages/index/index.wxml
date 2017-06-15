@@ -1,0 +1,38 @@
+<!--index.wxml-->
+
+<!-- 标签导航 -->
+<view class="tag-list">
+    <view
+    class="tag-item"
+    bindtap="changeTag"
+    data-tag="{{tag}}"
+    wx:for="{{tags}}"
+    wx:for-item="tag"
+    wx:key="tags">
+        {{tag}}
+    </view>
+</view>
+
+
+<view class="book-list">
+    <block wx:for="{{books}}" wx:key="id">
+        <!-- 引用模板:book-list -->
+        <template is="book-content" data="{{...item}}" />
+    </block>
+</view>
+
+
+<!-- 模板：列表的内容 -->
+<template name="book-content">
+    <view class="content" bindtap="showDetail" data-id="{{id}}">
+        <image class="cover" mode="widthfix" src="{{image}}" />
+        <view class="title">《{{title}}》</view>
+        <view class="author">{{author}}</view>
+        <view class="time">{{pubdate}}</view>
+        <view class="pages">{{pages}}页</view>
+        <view class="publisher">{{publisher}}</view>
+        <view class="price">
+            {{ price[-1] === '元' ? price : price + '元'}}
+        </view>
+    </view>
+</template>
