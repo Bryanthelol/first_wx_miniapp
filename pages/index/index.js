@@ -22,8 +22,17 @@ Page( {
   },
   onLoad: function () {
     that = this;
-    // 第一次调用的时候，默认加载tags的第一项
-    loadBooks( that.data.tags[ 0 ], 0 );
+    // 初始小程序时，获取缓存（如果有缓存的话）
+    wx.getStorage( {
+      key: 'tag',
+      success: function ( res ) {
+        loadBooks( res.data );
+      },
+      fail: function ( res ) {
+        // 第一次调用的时候，默认加载tags的第一项
+        loadBooks( that.data.tags[ 0 ], 0 );
+      }
+    } )
   },
   onShow: function () {
 
@@ -42,6 +51,10 @@ Page( {
 function loadBooks( tagName, firstLoad ) {
   currentTag = tagName;
   currentStart = firstLoad;
+
+  // 保存用户此次点击标签到缓存
+  wx.setStorageSync( 'tag', tagName );
+
   // 这个if条件的目的：当changeTag事件触发，传入0时，把books清空，
   // 因此避免上一个标签的图书列表直接拼接到这个被切换标签的图书列表上
   if ( firstLoad === 0 ) {
