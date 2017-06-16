@@ -32,7 +32,7 @@
         <view class="pages">{{pages}}页</view>
         <view class="publisher">{{publisher}}</view>
         <view class="price">
-            {{ price[-1] === '元' ? price : price + '元'}}
+            {{ price.slice[-1] === '元' ? price : price + '元' }}
         </view>
     </view>
 </template>

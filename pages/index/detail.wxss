@@ -1,1 +1,94 @@
 /* pages/index/detail.wxss */
+
+/*
+
+目录:
+
+0 页面背景色设置
+
+1 书籍详情的容器，用以设置整体样式
+
+2 各个具体内容的样式
+
+
+*/
+
+
+/* 0 页面背景色设置 */
+page {
+    background-color: #eff3f9;
+}
+
+/* 1 书籍详情的容器，用以设置整体样式 */
+.book-detail {
+    padding: 50rpx;
+    font-size: 40rpx;
+    font-family: sans-serif;
+    text-align: center;
+    line-height: 1.8;
+}
+
+
+/* 2 各个具体内容的样式 */
+.title {
+    font-size: 1.2em;
+}
+
+.cover {
+    width: 300rpx;
+    height: 430rpx;
+    border-style: groove;
+    margin-top: 20rpx;
+    box-shadow:8rpx 12rpx 8rpx #c3d5f4;
+}
+
+.rating {
+    margin-top: 50rpx;
+}
+
+.ratingpeople {
+
+}
+
+.author {
+    text-align: left;
+    margin-top: 30rpx;
+}
+
+.authorintro  {
+    text-align: justify;
+    font-size: 0.9em;
+    margin-top: 15rpx;
+}
+
+.pubdate  {
+    text-align: justify;
+    margin-top: 30rpx;
+}
+
+.publisher  {
+    text-align: justify;
+}
+
+.pages  {
+    text-align: justify;
+    margin-top: 30rpx;
+}
+
+.price  {
+    text-align: justify;
+}
+
+.summary {
+    text-align: justify;
+    margin-top: 40rpx;
+}
+
+.hidden {
+    margin-top: 60rpx;
+    font-family: monospace;
+    font-weight: lighter;
+    color: #c3d5f4;
+}
+
+/* 3  */

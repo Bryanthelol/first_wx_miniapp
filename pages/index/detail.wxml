@@ -1,2 +1,16 @@
 <!--pages/index/detail.wxml-->
-<text>pages/index/detail.wxml</text>
+
+<view class="book-detail">
+    <view class="title">《{{book.title}}》</view>
+    <image class="cover" mode="widthfix" src="{{book.image}}" />
+    <view class="rating">豆瓣评分：{{book.rating.average}}</view>
+    <view class="ratingpeople">评分人数：{{book.rating.numRaters}}人</view>
+    <view class="author">作者：{{book.author}}</view>
+    <view class="authorintro">作者简介：{{book.author_intro}}</view>
+    <view class="pubdate">出版时间：{{book.pubdate}}</view>
+    <view class="publisher">出版社：{{book.publisher}}</view>
+    <view class="pages">页数：{{book.pages}}页</view>
+    <view class="price">单价：{{book.price}}</view>
+    <view class="summary">本书内容概括：{{book.summary}}</view>
+    <view class="hidden" hidden="{{hideOrNot}}">没有了！已经浏览完啦</view>
+</view>

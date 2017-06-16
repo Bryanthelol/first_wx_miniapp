@@ -1,18 +1,29 @@
 // pages/index/detail.js
+var that;
+
 Page( {
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    hideOrNot: true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function ( options ) {
-
+    that = this;
+    wx.request( {
+      url: 'https://api.douban.com/v2/book/' + options.id,
+      method: 'GET',
+      success: function ( res ) {
+        that.setData( {
+          book: res.data
+        } )
+      }
+    } )
   },
 
   /**
@@ -54,7 +65,9 @@ Page( {
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    that.setData( {
+      hideOrNot: false
+    } )
   },
 
   /**
