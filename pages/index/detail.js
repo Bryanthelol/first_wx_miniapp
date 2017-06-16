@@ -19,6 +19,9 @@ Page( {
       url: 'https://api.douban.com/v2/book/' + options.id,
       method: 'GET',
       success: function ( res ) {
+        wx.setNavigationBarTitle( {
+          title: res.data.title
+        } )
         that.setData( {
           book: res.data
         } )
