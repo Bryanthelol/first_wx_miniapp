@@ -20,7 +20,7 @@ Page( {
       method: 'GET',
       success: function ( res ) {
         wx.setNavigationBarTitle( {
-          title: res.data.title
+          title: '《' + res.data.title + '》详情'
         } )
         that.setData( {
           book: res.data
