@@ -27,7 +27,7 @@ Page( {
     wx.getStorage( {
       key: 'tag',
       success: function ( res ) {
-        loadBooks( res.data );
+        loadBooks( res.data, 0 );
       },
       fail: function ( res ) {
         // 第一次调用的时候，默认加载tags的第一项
@@ -56,16 +56,13 @@ function loadBooks( tagName, firstLoad ) {
   // 保存用户此次点击标签到缓存
   wx.setStorageSync( 'tag', tagName );
 
-  // 绑定curTag的值，目的：给被选择的标签加上被选择时的样式
-  that.setData( {
-    curTag: tagName
-  } );
-
   // 这个if条件的目的：当changeTag事件触发，传入0时，把books清空，
   // 因此避免上一个标签的图书列表直接拼接到这个被切换标签的图书列表上
   if ( firstLoad === 0 ) {
     that.setData( {
-      books: []
+      books: [],
+      // 绑定curTag的值，目的：给被选择的标签加上被选择时的样式
+      curTag: tagName
     } )
   }
 
