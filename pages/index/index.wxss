@@ -10,6 +10,8 @@
 
 4 因标签悬浮导致和book-content重叠，所以设置大容器book-list
 
+5 设置标签被点击时的样式
+
 */
 
 
@@ -106,4 +108,9 @@ page {
 /* 4 因标签悬浮导致和book-content重叠，所以设置大容器book-list */
 .book-list {
     padding-top: 50rpx;
+}
+
+/* 5 设置标签被点击时的样式 */
+.active-tag {
+    background-color: #c3d5f4;
 }

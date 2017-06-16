@@ -3,7 +3,7 @@
 <!-- 标签导航 -->
 <scroll-view scroll-x class="tag-list">
     <view
-    class="tag-item"
+    class="tag-item {{curTag === tag ? 'active-tag' : ''}}"
     bindtap="changeTag"
     data-tag="{{tag}}"
     wx:for="{{tags}}"
