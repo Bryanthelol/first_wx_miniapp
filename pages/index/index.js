@@ -9,7 +9,8 @@ Page( {
     curTag: null,
     tags: [ '小说', '商业', '社科', '天文', '数学', '工具书', '杂志',
     '杂志', '杂志' ],
-    books: []
+    books: [],
+    hideOrNot: true
   },
   // 点击标签切换到相应页面事件
   changeTag: function ( event ) {
@@ -44,7 +45,16 @@ Page( {
   },
   onReachBottom: function () {
     wx.showNavigationBarLoading();
+    that.setData( {
+      hideOrNot: false
+    } )
     loadBooks( currentTag, currentStart + 10 );
+  },
+  onShareAppMessage: function () {
+    return {
+      title: 'hahaha',
+      path: '/pages/index/index'
+    }
   }
 } );
 
@@ -84,6 +94,9 @@ function loadBooks( tagName, firstLoad ) {
     complete: function () {
       wx.hideNavigationBarLoading();
       wx.stopPullDownRefresh();
+      that.setData( {
+        hideOrNot: true
+      } )
     }
-  } )
-};;
+  } );
+}

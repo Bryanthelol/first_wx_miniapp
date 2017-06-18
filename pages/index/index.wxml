@@ -21,6 +21,8 @@
     </block>
 </view>
 
+<view class="loading" hidden="{{hideOrNot}}">加载中...</view>
+
 
 <!-- 模板：列表的内容 -->
 <template name="book-content">

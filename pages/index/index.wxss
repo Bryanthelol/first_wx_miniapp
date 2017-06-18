@@ -12,6 +12,8 @@
 
 5 设置标签被点击时的样式
 
+6 设置页面到底部时出现的加载提示的样式
+
 */
 
 
@@ -113,4 +115,10 @@ page {
 /* 5 设置标签被点击时的样式 */
 .active-tag {
     background-color: #c3d5f4;
+}
+
+/* 6 设置页面到底部时出现的加载提示的样式 */
+.loading {
+    text-align: center;
+    margin: 50rpx;
 }
