@@ -5,6 +5,21 @@
     <image class="cover" mode="widthfix" src="{{book.image}}" />
     <view class="rating">豆瓣评分：{{book.rating.average}}</view>
     <view class="ratingpeople">评分人数：{{book.rating.numRaters}}人</view>
+
+    <!-- 收藏按钮 -->
+    <view class="collection-button">
+        <button
+            size="mini"
+            style="font-size: 16px;padding: 10rpx 40rpx;"
+            hover-class="button-hover"
+            hover-start-time="20"
+            hover-stay-time="70"
+            type="primary">
+            收藏
+        </button>
+    </view>
+
+    <!-- 图书详情 -->
     <view class="author">作者：{{book.author}}</view>
     <view class="authorintro">作者简介：{{book.author_intro}}</view>
     <view class="pubdate">出版时间：{{book.pubdate}}</view>
@@ -13,17 +28,20 @@
     <view class="price">单价：{{book.price}}</view>
     <view class="summary">本书内容概括：{{book.summary}}</view>
 
+    <!-- 评论和感想 -->
+    <view class="comment-name">我的评价和感想：</view>
     <view class="comment-list">
-        <text class="comment-item" wx:for="{{comments}}">{{item}</text>
+        <text class="comment-item" wx:for="{{comments}}">{{item}}</text>
     </view>
 
+    <!-- 输入与提交评论感想的区域 -->
     <view>
         <form class="form" bindsubmit="saveContent" data-id="{{book.id}}">
             <view class="textarea">
                 <textarea
                     name="readinglog"
                     value="{{autoClear}}"
-                    placeholder="记录对这本书的一点感悟"
+                    placeholder="记录对这本书的一点评价和感想（可以记录多条，评论后自动收藏）"
                     placeholder-style="color:light;"
                     maxlength="-1" />
             </view>
@@ -40,5 +58,6 @@
         </form>
     </view>
 
+    <!-- 触底事件显示的信息 -->
     <view class="hidden" hidden="{{hideOrNot}}">没有了！已经到底了</view>
 </view>

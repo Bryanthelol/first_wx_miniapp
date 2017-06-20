@@ -121,4 +121,5 @@ page {
 .loading {
     text-align: center;
     margin: 50rpx;
+    color: light;
 }

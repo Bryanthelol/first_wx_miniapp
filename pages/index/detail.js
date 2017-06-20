@@ -16,6 +16,8 @@ Page( {
       wx.showModal( {
         title: "提示",
         content: "还没写呢！",
+        showCancel: false,
+        confirmText: "知道了！"
       } );
     } else {
       var comments = wx.getStorageSync( 'comments' );
@@ -45,7 +47,7 @@ Page( {
         wx.setNavigationBarTitle( {
           title: '《' + res.data.title + '》详情'
         } )
-        refreshComments( id )
+        refreshComments( res.data.id )
         that.setData( {
           book: res.data
         } )
@@ -109,9 +111,9 @@ Page( {
 
 // 渲染心得列表
 function refreshComments( id ) {
-  var comments = wx.getStorageSync( 'comment' ) || {};
-  page.setData( {
+  var comments = wx.getStorageSync( 'comments' ) || {};
+  that.setData( {
     autoClear: '',
     comments: comments[ id ] || []
-  } )
+  } );
 }

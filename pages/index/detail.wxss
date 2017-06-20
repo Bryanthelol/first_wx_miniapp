@@ -3,6 +3,7 @@
 /*
 
 目录:
+（目录顺序按功能添加时间排列）
 
 0 页面背景色设置
 
@@ -13,6 +14,8 @@
 3 设置表单form及其内部组件的样式
 
 4 设置心得列表的样式
+
+5 设置『收藏』按钮的样式
 
 
 */
@@ -112,6 +115,26 @@ page {
 }
 
 /* 4 设置心得列表的样式 */
+.comment-name {
+    margin-top: 50rpx;
+    text-align: left;
+    font-weight: bold;
+}
+
 .comment-list {
-    
+    line-height: 1.8;
+    margin-top: 30rpx;
+    border-top: 2rpx solid #ccc;
+    text-align: justify;
+}
+
+.comment-item  {
+    display: block;
+    border-bottom: 2rpx solid #ccc;
+}
+
+/* 5 设置『收藏』按钮的样式 */
+.collection-button {
+    margin-top: 50rpx;
+    margin-bottom: 30rpx;
 }
