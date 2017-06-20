@@ -22,7 +22,7 @@
 				"selectedIconPath": "images/faxianB.png"
       },
 			{
-				"pagePath": "pages/logs/logs",
+				"pagePath": "pages/collections/collections",
 				"text": "收藏",
 				"iconPath": "images/shoucangA.png",
 				"selectedIconPath": "images/shoucangB.png"
