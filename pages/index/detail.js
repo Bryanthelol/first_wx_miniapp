@@ -13,16 +13,9 @@ Page( {
   collectHandler: function ( event ) {
     // 收藏列表的数据类型为数组，这样才可以列表渲染
     var collections = wx.getStorageSync( 'collections' ) || [];
-    // 从data-xx获得数据
-    var id = event.currentTarget.dataset.id;
-    var image = event.currentTarget.dataset.image;
-    var title = event.currentTarget.dataset.title;
-    // 把上面三种数据以一本书为单位存入collections数组,每一本书的内容用对象存储
-    collections.push( {
-      id: id,
-      title: title,
-      image: image
-    } );
+    // 从data-xx获得数据,存在event.currentTarget.dataset，它的结构本身就为一个对象，包含所需的数据
+    // 把所需的数据以一本书为单位存入collections数组,每一本书的内容用对象存储
+    collections.push( event.currentTarget.dataset );
     wx.setStorageSync( "collections", collections );
   },
   // form提交事件submit的对应处理函数

@@ -45,7 +45,7 @@ Page( {
   onReachBottom: function () {
     wx.showNavigationBarLoading();
     that.setData( {
-      hideOrNot: !this.
+      hideOrNot: !this.data.hideOrNot
     } )
     loadBooks( currentTag, currentStart + 10 );
   },
