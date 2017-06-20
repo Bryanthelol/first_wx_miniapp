@@ -2,7 +2,7 @@
 	"pages": [
     "pages/index/index",
     "pages/index/detail",
-    "pages/logs/logs",
+    "pages/collections/collections",
 		"pages/setting/setting"
   ],
 	"window": {
