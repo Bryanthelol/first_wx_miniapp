@@ -7,8 +7,7 @@ var currentStart;
 Page( {
   data: {
     curTag: null,
-    tags: [ '小说', '商业', '社科', '天文', '数学', '工具书', '杂志',
-    '杂志', '杂志' ],
+    tags: [ '小说', '商业', '历史', '哲学', '社科', '天文', '数学', '工具书', '杂志' ],
     books: [],
     hideOrNot: true
   },
@@ -46,7 +45,7 @@ Page( {
   onReachBottom: function () {
     wx.showNavigationBarLoading();
     that.setData( {
-      hideOrNot: false
+      hideOrNot: !this.data.hideOrNot
     } )
     loadBooks( currentTag, currentStart + 10 );
   },
@@ -89,7 +88,6 @@ function loadBooks( tagName, firstLoad ) {
       that.setData( {
         books: that.data.books.concat( res.data.books )
       } );
-      console.log( res.data.books );
     },
     complete: function () {
       wx.hideNavigationBarLoading();

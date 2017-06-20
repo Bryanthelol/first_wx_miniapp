@@ -9,6 +9,29 @@ Page( {
   data: {
     hideOrNot: true
   },
+  // form提交事件submit的对应处理函数
+  saveContent: function ( event ) {
+    console.log( event );
+    if ( event.detail.value.readinglog.trim() === '' ) {
+      wx.showModal( {
+        title: "提示",
+        content: "还没写呢！",
+      } );
+    } else {
+      var comments = wx.getStorageSync( 'comments' );
+      var id = event.currentTarget.dataset.id;
+      var comment = event.detail.value.readinglog;
+      if ( !comments ) {
+        comments = {};
+      }
+      if ( !comments[ id ] ) {
+        comments[ id ] = [];
+      }
+      comments[ id ].push( comment );
+      wx.setStorageSync( 'comments', comments );
+      refreshComments( id );
+    }
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -22,12 +45,15 @@ Page( {
         wx.setNavigationBarTitle( {
           title: '《' + res.data.title + '》详情'
         } )
+        refreshComments( id )
         that.setData( {
           book: res.data
         } )
       }
-    } )
+    } );
   },
+
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -80,3 +106,12 @@ Page( {
 
   }
 } )
+
+// 渲染心得列表
+function refreshComments( id ) {
+  var comments = wx.getStorageSync( 'comment' ) || {};
+  page.setData( {
+    autoClear: '',
+    comments: comments[ id ] || []
+  } )
+}

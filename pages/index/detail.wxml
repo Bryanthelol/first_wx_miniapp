@@ -12,5 +12,33 @@
     <view class="pages">页数：{{book.pages}}页</view>
     <view class="price">单价：{{book.price}}</view>
     <view class="summary">本书内容概括：{{book.summary}}</view>
-    <view class="hidden" hidden="{{hideOrNot}}">没有了！已经浏览完啦</view>
+
+    <view class="comment-list">
+        <text class="comment-item" wx:for="{{comments}}">{{item}</text>
+    </view>
+
+    <view>
+        <form class="form" bindsubmit="saveContent" data-id="{{book.id}}">
+            <view class="textarea">
+                <textarea
+                    name="readinglog"
+                    value="{{autoClear}}"
+                    placeholder="记录对这本书的一点感悟"
+                    placeholder-style="color:light;"
+                    maxlength="-1" />
+            </view>
+            <view class="button">
+                <button
+                    form-type="submit"
+                    type="primary"
+                    hover-start-time="20"
+                    hover-stay-time="70"
+                    hover-class="button-hover">
+                    确定
+                </button>
+            </view>
+        </form>
+    </view>
+
+    <view class="hidden" hidden="{{hideOrNot}}">没有了！已经到底了</view>
 </view>

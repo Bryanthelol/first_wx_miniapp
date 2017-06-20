@@ -10,6 +10,10 @@
 
 2 各个具体内容的样式
 
+3 设置表单form及其内部组件的样式
+
+4 设置心得列表的样式
+
 
 */
 
@@ -85,10 +89,29 @@ page {
 }
 
 .hidden {
-    margin-top: 60rpx;
+    margin-top: 90rpx;
     font-family: monospace;
     font-weight: lighter;
     color: #c3d5f4;
 }
 
-/* 3  */
+/* 3 设置表单form及其内部组件的样式 */
+.form {
+    margin-top: 50rpx;
+    padding: 50rpx;
+}
+
+.textarea {
+    background-color: white;
+    text-align: left;
+    padding: 15rpx;
+}
+
+.button {
+    margin-top: 50rpx;
+}
+
+/* 4 设置心得列表的样式 */
+.comment-list {
+    
+}
