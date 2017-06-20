@@ -9,6 +9,10 @@
     <!-- 收藏按钮 -->
     <view class="collection-button">
         <button
+            bindtap="collectHandler"
+            data-id="{{book.id}}"
+            data-title="{{book.title}}"
+            data-image="{{book.image}}"
             size="mini"
             style="font-size: 16px;padding: 10rpx 40rpx;"
             hover-class="button-hover"
