@@ -19,7 +19,7 @@ Page( {
   showDetail: function ( event ) {
     wx.navigateTo( {
       url: '/pages/index/detail?id=' + event.currentTarget.dataset.id
-    } )
+    } );
   },
   onLoad: function () {
     that = this;

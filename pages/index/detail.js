@@ -7,16 +7,41 @@ Page( {
    * 页面的初始数据
    */
   data: {
-    hideOrNot: true
+    hideOrNot: true,
+    collectOrNot: false
   },
   // 点击收藏按钮后的绑定事件
-  collectHandler: function ( event ) {
+  collectConfirm: function ( event ) {
+    console.log( event );
     // 收藏列表的数据类型为数组，这样才可以列表渲染
     var collections = wx.getStorageSync( 'collections' ) || [];
+    // 牺牲性能，保存冗余数据，方便查询
+    var collections_id = wx.getStorageSync( 'collections_id' ) || [];
     // 从data-xx获得数据,存在event.currentTarget.dataset，它的结构本身就为一个对象，包含所需的数据
     // 把所需的数据以一本书为单位存入collections数组,每一本书的内容用对象存储
     collections.push( event.currentTarget.dataset );
-    wx.setStorageSync( "collections", collections );
+    collections_id.push( event.currentTarget.dataset.id );
+    wx.setStorageSync( 'collections', collections );
+    wx.setStorageSync( 'collections_id', collections_id );
+    this.setData( {
+      collectOrNot: true
+    } )
+  },
+  collectCancel: function ( event ) {
+    var collections = wx.getStorageSync( 'collections' ) || [];
+    var collections_id = wx.getStorageSync( 'collections_id' ) || [];
+    var id = event.currentTarget.dataset.id;
+    var index = collections_id.indexOf( id );
+    if ( index !== -1 ) {
+      // 删除相应数组
+      collections.splice( index, 1 );
+      collections_id.splice( index, 1 );
+      wx.setStorageSync( 'collections', collections );
+      wx.setStorageSync( 'collections_id', collections_id );
+      this.setData( {
+        collectOrNot: false
+      } )
+    }
   },
   // form提交事件submit的对应处理函数
   saveContent: function ( event ) {
@@ -55,11 +80,13 @@ Page( {
       success: function ( res ) {
         wx.setNavigationBarTitle( {
           title: '《' + res.data.title + '》详情'
-        } )
-        refreshComments( res.data.id )
+        } );
+        var ids = wx.getStorageSync( 'collections_id' ) || [];
+        refreshComments( options.id );
         that.setData( {
-          book: res.data
-        } )
+          book: res.data,
+          collectOrNot: ids.indexOf( options.id ) !== -1
+        } );
       }
     } );
   },

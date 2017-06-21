@@ -1,0 +1,53 @@
+/* collections.wxss
+
+目录
+
+0 设置页面背景色
+
+1 设置大容器collections-list和小容器collections-item的样式
+
+2 设置书封面和标题的样式
+
+
+ */
+
+
+
+/* 正文 */
+
+/* 0 设置页面背景色 */
+page {
+    background-color: #eff3f9;
+}
+
+/* 1 设置大容器collections-list和小容器collections-item的样式，外套一个flex，实现倒序排列 */
+.collections-list {
+    margin: 10rpx;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.collections-item {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding: 15rpx 10rpx;
+    margin: 10rpx;
+    box-shadow:6rpx 10rpx 8rpx #c3d5f4;
+}
+
+ /* 2 设置书封面和标题的样式 */
+ .cover {
+     width: 100rpx;
+     height: 150rpx;
+     margin-left: 20rpx;
+     border-style: groove;
+     box-shadow:5rpx 7rpx 6rpx #c3d5f4;
+
+ }
+
+ .title {
+     font-size: 35rpx;
+     margin-left: 40rpx;
+     font-family: sans-serif;
+ }
