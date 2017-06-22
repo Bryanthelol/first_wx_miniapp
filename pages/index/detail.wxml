@@ -18,7 +18,7 @@
             hover-class="button-hover"
             hover-start-time="20"
             hover-stay-time="70"
-            type="primary">
+            type="default">
             {{ collectOrNot ? '取消收藏' : '收藏' }}
         </button>
     </view>
@@ -51,13 +51,13 @@
                     name="readinglog"
                     value="{{autoClear}}"
                     placeholder="记录对这本书的一点评价和感想（可以记录多条，评论后自动收藏）"
-                    placeholder-style="color:light;"
+                    placeholder-style="color:#ccc;"
                     maxlength="-1" />
             </view>
             <view class="button">
                 <button
                     form-type="submit"
-                    type="primary"
+                    type="default"
                     hover-start-time="20"
                     hover-stay-time="70"
                     hover-class="button-hover">

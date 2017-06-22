@@ -6,7 +6,7 @@
 		"pages/setting/setting"
   ],
 	"window": {
-		"navigationBarBackgroundColor": "#eff3f9",
+		"navigationBarBackgroundColor": "white",
 		"navigationBarTitleText": "北极森林",
 		"navigationBarTextStyle": "black",
 		"backgroundTextStyle": "dark",

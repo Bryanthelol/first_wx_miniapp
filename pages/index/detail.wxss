@@ -105,7 +105,7 @@ page {
 }
 
 .textarea {
-    background-color: white;
+    background-color: #f6f6f6;
     text-align: left;
     padding: 15rpx;
 }

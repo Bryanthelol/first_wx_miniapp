@@ -22,9 +22,7 @@ page {
 
 /* 1 设置大容器collections-list和小容器collections-item的样式，外套一个flex，实现倒序排列 */
 .collections-list {
-    margin: 10rpx;
-    display: flex;
-    flex-direction: column-reverse;
+    margin: 15rpx 12rpx;
 }
 
 .collections-item {
