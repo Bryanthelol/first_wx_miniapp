@@ -3,6 +3,7 @@
 var that;
 var currentTag;
 var currentStart;
+var isLastPage;
 
 Page( {
   data: {
@@ -68,6 +69,8 @@ function loadBooks( tagName, firstLoad ) {
   // 这个if条件的目的：当changeTag事件触发，传入0时，把books清空，
   // 因此避免上一个标签的图书列表直接拼接到这个被切换标签的图书列表上
   if ( firstLoad === 0 ) {
+    // 每次加载第一页，重置这个变量
+    isLastPage = false;
     that.setData( {
       books: [],
       // 绑定curTag的值，目的：给被选择的标签加上被选择时的样式
@@ -85,6 +88,10 @@ function loadBooks( tagName, firstLoad ) {
     },
     method: 'GET',
     success: function ( res ) {
+      // 判断是否达到最后一页
+      if ( res.data.start + res.data.count >= res.data.total ) {
+        isLastPage = true;
+      }
       that.setData( {
         books: that.data.books.concat( res.data.books )
       } );

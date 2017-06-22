@@ -6,6 +6,7 @@
     <!-- 收藏书籍的列表 -->
     <view
         wx:for="{{collections}}"
+        wx:key="id"
         bindtap="navigateToDetail"
         data-id="{{item.id}}"
         class="collections-item">

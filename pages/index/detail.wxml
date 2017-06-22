@@ -35,7 +35,12 @@
     <!-- 评论和感想 -->
     <view class="comment-name">我的评价和感想：</view>
     <view class="comment-list">
-        <text class="comment-item" wx:for="{{comments}}">{{item}}</text>
+        <text
+            class="comment-item"
+            wx:for="{{comments}}"
+            wx:key="*this">
+            {{item}}
+        </text>
     </view>
 
     <!-- 输入与提交评论感想的区域 -->
