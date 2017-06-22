@@ -5,7 +5,7 @@
     "pages/collections/collections"
   ],
 	"window": {
-		"navigationBarBackgroundColor": "white",
+		"navigationBarBackgroundColor": "#ffffff",
 		"navigationBarTitleText": "北极森林",
 		"navigationBarTextStyle": "black",
 		"backgroundTextStyle": "dark",
