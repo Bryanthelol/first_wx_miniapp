@@ -2,8 +2,7 @@
 	"pages": [
     "pages/index/index",
     "pages/index/detail",
-    "pages/collections/collections",
-		"pages/setting/setting"
+    "pages/collections/collections"
   ],
 	"window": {
 		"navigationBarBackgroundColor": "white",
@@ -26,13 +25,7 @@
 				"text": "收藏",
 				"iconPath": "images/shoucangA.png",
 				"selectedIconPath": "images/shoucangB.png"
-      },
-			{
-				"pagePath": "pages/setting/setting",
-				"text": "设置",
-				"iconPath": "images/settingA.png",
-				"selectedIconPath": "images/settingB.png"
-			}
+      }
     ],
 		"color": "#62779e",
 		"selectedColor": "#3577f2",
@@ -42,5 +35,5 @@
 	"networkTimeout": {
 		"request": 60000
 	},
-	"debug": true
+	"debug": false
 }
