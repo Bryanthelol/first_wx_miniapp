@@ -1,5 +1,6 @@
 // pages/index/detail.js
 var that;
+var bookId, bookTitle;
 
 Page( {
 
@@ -74,6 +75,7 @@ Page( {
    */
   onLoad: function ( options ) {
     that = this;
+    bookId = options.id;
     wx.request( {
       url: 'https://api.douban.com/v2/book/' + options.id,
       method: 'GET',
@@ -81,6 +83,7 @@ Page( {
         'content-type': 'text/html'
       },
       success: function ( res ) {
+        bookTitle = res.data.title;
         wx.setNavigationBarTitle( {
           title: '《' + res.data.title + '》详情'
         } );
@@ -145,8 +148,8 @@ Page( {
    */
   onShareAppMessage: function ( event ) {
     return {
-      title: '我喜欢这本书，强烈推荐！',
-      path: '/pages/index/index',
+      title: '《' + bookTitle + '》强烈推荐！',
+      path: '/pages/index/detail?id=' + bookId,
       success: function () {
         wx.showToast( {
           title: '转发成功',
