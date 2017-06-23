@@ -1,4 +1,6 @@
 //logs.js
+var that;
+var curPage;
 
 Page( {
   data: {
@@ -10,28 +12,29 @@ Page( {
     } );
   },
   onLoad: function () {
-
+    that = this;
   },
   onShow: function () {
-    this.setData( {
-      collections: wx.getStorageSync( 'collections' ) || []
-    } );
+    collections: getCollData( 1 );
   },
   onPullDownRefresh: function () {
-    this.setData( {
-      collections: wx.getStorageSync( 'collections' ) || [],
-    } );
+    collections: getCollData( curPage + 1 );
     wx.stopPullDownRefresh();
   },
   onReachBottom() {
-
+    collections: getCollData( curPage + 1 );
   }
 } )
 
+// 函数实现的功能：翻页，一次只加载10项
 function getCollData( page ) {
+  // 保存已翻过的页数，触发到底部事件时，加载当前页数再加一
+  curPage = page;
   var collections = wx.getStorageSync( 'collections' ) || [];
   var length = 10;
   // page为页数，第一页的时候start为0，第二页start为1，以此类推
-  var start = page * length;
-  return collections.splice( 0, length );
-}
+  var count = page * length;
+  that.setData( {
+    collections: collections.splice( 0, count )
+  } )
+};

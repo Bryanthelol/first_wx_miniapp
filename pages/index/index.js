@@ -8,7 +8,8 @@ var isLastPage;
 Page( {
   data: {
     curTag: null,
-    tags: [ '小说', '商业', '历史', '哲学', '社科', '天文', '数学', '工具书', '杂志' ],
+    tags: [ '流行', '爱情', '小说', '商业', '历史', '科技', '哲学', '社科',
+    '天文', '数学', '工具书', '生活', '编程' ],
     books: [],
     hideOrNot: true
   },
@@ -52,7 +53,7 @@ Page( {
   },
   onShareAppMessage: function () {
     return {
-      title: 'hahaha',
+      title: '看看',
       path: '/pages/index/index'
     }
   }
@@ -83,11 +84,15 @@ function loadBooks( tagName, firstLoad ) {
     url: 'https://api.douban.com/v2/book/search',
     data: {
       start: firstLoad,
-      tag: tagName,
-      count: 10
+      count: 10,
+      tag: tagName
     },
     method: 'GET',
+    header: {
+      'content-type': 'text/html'
+    },
     success: function ( res ) {
+      console.log( res );
       // 判断是否达到最后一页
       if ( res.data.start + res.data.count >= res.data.total ) {
         isLastPage = true;

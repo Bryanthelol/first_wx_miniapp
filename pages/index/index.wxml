@@ -8,7 +8,7 @@
     data-tag="{{tag}}"
     wx:for="{{tags}}"
     wx:for-item="tag"
-    wx:key="tags">
+    wx:key="tag">
         {{tag}}
     </view>
 </scroll-view>
