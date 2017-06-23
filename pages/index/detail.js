@@ -19,8 +19,8 @@ Page( {
     var collections_id = wx.getStorageSync( 'collections_id' ) || [];
     // 从data-xx获得数据,存在event.currentTarget.dataset，它的结构本身就为一个对象，包含所需的数据
     // 把所需的数据以一本书为单位存入collections数组,每一本书的内容用对象存储
-    collections.push( event.currentTarget.dataset );
-    collections_id.push( event.currentTarget.dataset.id );
+    collections.unshift( event.currentTarget.dataset );
+    collections_id.unshift( event.currentTarget.dataset.id );
     wx.setStorageSync( 'collections', collections );
     wx.setStorageSync( 'collections_id', collections_id );
     this.setData( {
