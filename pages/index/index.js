@@ -19,7 +19,6 @@ Page( {
   },
   // 点击列表进入详情页的事件
   showDetail: function ( event ) {
-    console.log( event );
     wx.navigateTo( {
       url: '/pages/index/detail?id=' + event.currentTarget.dataset.id
     } );
@@ -50,13 +49,28 @@ Page( {
     that.setData( {
       hideOrNot: !this.data.hideOrNot
     } )
-    loadBooks( currentTag, currentStart + 10 );
+    loadBooks( currentTag, currentStart + 5 );
   },
   onShareAppMessage: function () {
     return {
-      title: '看看',
-      path: '/pages/index/index'
-    }
+      title: '快来看看有啥你喜欢的书',
+      path: '/pages/index/index',
+      success: function () {
+        wx.showToast( {
+          title: '转发成功',
+          icon: 'success'
+        } );
+      },
+      fail: function ( errRes ) {
+        if ( errRes.errMsg === 'shareAppMessage:fail' ) {
+          wx.showToast( {
+            title: that.errRes.errMsg,
+            icon: 'fail',
+            duration: 6000
+          } );
+        }
+      }
+    };
   }
 } );
 
@@ -79,13 +93,17 @@ function loadBooks( tagName, firstLoad ) {
       curTag: tagName
     } )
   }
+  // 如果达到最后一页则用return返回来停止加载
+  if ( isLastPage === true ) {
+    return;
+  }
 
   wx.showNavigationBarLoading();
   wx.request( {
     url: 'https://api.douban.com/v2/book/search',
     data: {
       start: firstLoad,
-      count: 10,
+      count: 5,
       tag: tagName
     },
     method: 'GET',
@@ -109,4 +127,4 @@ function loadBooks( tagName, firstLoad ) {
       } )
     }
   } );
-}
+};

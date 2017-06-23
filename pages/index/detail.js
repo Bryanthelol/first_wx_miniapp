@@ -143,10 +143,28 @@ Page( {
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function ( event ) {
+    return {
+      title: '我喜欢这本书，强烈推荐！',
+      path: '/pages/index/index',
+      success: function () {
+        wx.showToast( {
+          title: '转发成功',
+          icon: 'success'
+        } );
+      },
+      fail: function ( errRes ) {
+        if ( errRes.errMsg === 'shareAppMessage:fail' ) {
+          wx.showToast( {
+            title: that.errRes.errMsg,
+            icon: 'fail',
+            duration: 6000
+          } );
+        }
+      }
+    };
   }
-} )
+} );
 
 // 渲染心得列表
 function refreshComments( id ) {
@@ -155,4 +173,4 @@ function refreshComments( id ) {
     autoClear: '',
     comments: comments[ id ] || []
   } );
-}
+};
