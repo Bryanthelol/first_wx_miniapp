@@ -77,6 +77,9 @@ Page( {
     wx.request( {
       url: 'https://api.douban.com/v2/book/' + options.id,
       method: 'GET',
+      header: {
+        'content-type': 'text/html'
+      },
       success: function ( res ) {
         wx.setNavigationBarTitle( {
           title: '《' + res.data.title + '》详情'

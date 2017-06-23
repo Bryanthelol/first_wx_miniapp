@@ -19,6 +19,7 @@ Page( {
   },
   // 点击列表进入详情页的事件
   showDetail: function ( event ) {
+    console.log( event );
     wx.navigateTo( {
       url: '/pages/index/detail?id=' + event.currentTarget.dataset.id
     } );
@@ -92,7 +93,6 @@ function loadBooks( tagName, firstLoad ) {
       'content-type': 'text/html'
     },
     success: function ( res ) {
-      console.log( res );
       // 判断是否达到最后一页
       if ( res.data.start + res.data.count >= res.data.total ) {
         isLastPage = true;
