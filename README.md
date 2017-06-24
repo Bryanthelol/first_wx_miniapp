@@ -3,6 +3,14 @@
 
 产品展示图：
 
+新版：
+
+![效果图5](https://raw.github.com/Bryanthelol/first_wx_miniapp/master/images/5.png)
+
+![效果图6](https://raw.github.com/Bryanthelol/first_wx_miniapp/master/images/6.png)
+
+老版：
+
 ![效果图1](https://raw.github.com/Bryanthelol/first_wx_miniapp/master/images/1.png)
 
 ![效果图2](https://raw.github.com/Bryanthelol/first_wx_miniapp/master/images/2.png)

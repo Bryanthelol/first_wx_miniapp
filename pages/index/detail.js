@@ -82,6 +82,8 @@ Page( {
     that = this;
     bookId = options.id;
     var books = wx.getStorageSync( 'books' ) || {};
+
+    // 如果设置了缓存过期，这里也要加上缓存是否过期的判断
     if ( books[ bookId ] ) {
       renderDetail( books[ bookId ] );
     } else {
