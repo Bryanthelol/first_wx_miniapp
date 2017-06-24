@@ -1,5 +1,6 @@
 // pages/index/detail.js
 var that;
+// 为了分享函数获取图书id和title而生的中转变量
 var bookId, bookTitle;
 
 Page( {
@@ -13,12 +14,14 @@ Page( {
   },
   // 点击收藏按钮后的绑定事件
   collectConfirm: function ( event ) {
-    console.log( event );
     // 收藏列表的数据类型为数组，这样才可以列表渲染
     var collections = wx.getStorageSync( 'collections' ) || [];
+
     // 牺牲性能，保存冗余数据，方便查询
     var collections_id = wx.getStorageSync( 'collections_id' ) || [];
-    // 从data-xx获得数据,存在event.currentTarget.dataset，它的结构本身就为一个对象，包含所需的数据
+
+    // 从data-xx获得数据,存在event.currentTarget.dataset，
+    // 它的结构本身就为一个对象，包含所需的数据
     // 把所需的数据以一本书为单位存入collections数组,每一本书的内容用对象存储
     collections.unshift( event.currentTarget.dataset );
     collections_id.unshift( event.currentTarget.dataset.id );
@@ -32,9 +35,11 @@ Page( {
     var collections = wx.getStorageSync( 'collections' ) || [];
     var collections_id = wx.getStorageSync( 'collections_id' ) || [];
     var id = event.currentTarget.dataset.id;
+
+    // 用indexOf，如果不存在会返回-1，存在即相应索引值
     var index = collections_id.indexOf( id );
     if ( index !== -1 ) {
-      // 删除相应数组
+      // 如果不等于-1，即存在，则删除相应数组
       collections.splice( index, 1 );
       collections_id.splice( index, 1 );
       wx.setStorageSync( 'collections', collections );
@@ -76,25 +81,26 @@ Page( {
   onLoad: function ( options ) {
     that = this;
     bookId = options.id;
-    wx.request( {
-      url: 'https://api.douban.com/v2/book/' + options.id,
-      method: 'GET',
-      header: {
-        'content-type': 'text/html'
-      },
-      success: function ( res ) {
-        bookTitle = res.data.title;
-        wx.setNavigationBarTitle( {
-          title: '《' + res.data.title + '》详情'
-        } );
-        var ids = wx.getStorageSync( 'collections_id' ) || [];
-        refreshComments( options.id );
-        that.setData( {
-          book: res.data,
-          collectOrNot: ids.indexOf( options.id ) !== -1
-        } );
-      }
-    } );
+    var books = wx.getStorageSync( 'books' ) || {};
+    if ( books[ bookId ] ) {
+      renderDetail( books[ bookId ] );
+    } else {
+      wx.request( {
+        url: 'https://api.douban.com/v2/book/' + bookId,
+        method: 'GET',
+        header: {
+          'content-type': 'text/html'
+        },
+        success: function ( res ) {
+          // 给books加上API返回的数据
+          books[ bookId ] = res.data;
+
+          // 把被赋予数据的books存入缓存
+          wx.setStorageSync( 'books', books );
+          renderDetail( res.data );
+        }
+      } );
+    }
   },
 
 
@@ -177,3 +183,19 @@ function refreshComments( id ) {
     comments: comments[ id ] || []
   } );
 };
+
+// 把渲染页面的代码提取出来
+function renderDetail( data ) {
+  bookTitle = data.title;
+  wx.setNavigationBarTitle( {
+    title: '《' + data.title + '》详情'
+  } );
+  var ids = wx.getStorageSync( 'collections_id' ) || [];
+  refreshComments( data.id );
+  that.setData( {
+    book: data,
+
+    // 用indexOf方法返回的值做判断，若不等于-1，则返回true，反之亦然
+    collectOrNot: ids.indexOf( data.id ) !== -1
+  } );
+}
