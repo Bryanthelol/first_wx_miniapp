@@ -50,7 +50,7 @@
                 <textarea
                     name="readinglog"
                     value="{{autoClear}}"
-                    placeholder="记录对这本书的一点评价和感想（可以记录多条，评论后自动收藏）"
+                    placeholder="记录对这本书的一点评价和感想（可以记录多条）"
                     placeholder-style="color:#ccc;"
                     maxlength="-1" />
             </view>
