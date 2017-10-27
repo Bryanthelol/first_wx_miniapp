@@ -1,3 +1,14 @@
+/**
+ * @Author: 何玉龙 <apple>
+ * @Date:   2017-06-23T20:03:13+08:00
+ * @Email:  bryantsisu@gmail.com
+ * @Filename: detail.js
+ * @Last modified by:   apple
+ * @Last modified time: 2017-07-27T23:09:31+08:00
+ */
+
+
+
 // pages/index/detail.js
 var that;
 // 为了分享函数获取图书id和title而生的中转变量
@@ -10,7 +21,8 @@ Page( {
    */
   data: {
     hideOrNot: true,
-    collectOrNot: false
+    collectOrNot: false,
+    canIUse: wx.canIUse( 'button.open-type.share' )
   },
   // 点击收藏按钮后的绑定事件
   collectConfirm: function ( event ) {
@@ -60,12 +72,9 @@ Page( {
       } );
     } else {
       // 验证通过后，把通过form传入的数据存入缓存
-      var comments = wx.getStorageSync( 'comments' );
+      var comments = wx.getStorageSync( 'comments' ) || {};
       var id = event.currentTarget.dataset.id;
       var comment = event.detail.value.readinglog;
-      if ( !comments ) {
-        comments = {};
-      }
       if ( !comments[ id ] ) {
         comments[ id ] = [];
       }
@@ -177,7 +186,7 @@ Page( {
   }
 } );
 
-// 渲染心得列表
+// 渲染心得评论列表
 function refreshComments( id ) {
   var comments = wx.getStorageSync( 'comments' ) || {};
   that.setData( {

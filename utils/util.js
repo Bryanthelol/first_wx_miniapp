@@ -1,3 +1,14 @@
+/**
+ * @Author: 何玉龙 <apple>
+ * @Date:   2017-06-09T06:44:24+08:00
+ * @Email:  bryantsisu@gmail.com
+ * @Filename: util.js
+ * @Last modified by:   apple
+ * @Last modified time: 2017-07-31T05:54:43+08:00
+ */
+
+
+
 function formatTime( date ) {
   var year = date.getFullYear()
   var month = date.getMonth() + 1
@@ -17,5 +28,6 @@ function formatNumber( n ) {
 }
 
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  formatNumber: formatNumber
 }

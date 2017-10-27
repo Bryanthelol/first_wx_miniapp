@@ -1,3 +1,14 @@
+<!--
+@Author: 何玉龙 <apple>
+@Date:   2017-06-23T20:03:13+08:00
+@Email:  bryantsisu@gmail.com
+@Filename: detail.wxml
+@Last modified by:   apple
+@Last modified time: 2017-07-27T23:09:28+08:00
+-->
+
+
+
 <!--pages/index/detail.wxml-->
 
 <view class="book-detail">
@@ -44,8 +55,8 @@
     </view>
 
     <!-- 输入与提交评论感想的区域 -->
-    <view>
-        <form class="form" bindsubmit="saveContent" data-id="{{book.id}}">
+    <view class="form">
+        <form bindsubmit="saveContent" data-id="{{book.id}}">
             <view class="textarea">
                 <textarea
                     name="readinglog"
@@ -56,12 +67,23 @@
             </view>
             <view class="button">
                 <button
+                    class="button-one"
                     form-type="submit"
-                    type="default"
+                    type="primary"
                     hover-start-time="20"
                     hover-stay-time="70"
                     hover-class="button-hover">
                     确定
+                </button>
+                <button
+                    class="button-two"
+                    wx:if="{{canIUse}}"
+                    open-type="share"
+                    type="default"
+                    hover-start-time="20"
+                    hover-stay-time="70"
+                    hover-class="button-hover">
+                    分享
                 </button>
             </view>
         </form>

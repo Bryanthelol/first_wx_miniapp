@@ -100,8 +100,7 @@ page {
 
 /* 3 设置表单form及其内部组件的样式 */
 .form {
-    margin-top: 50rpx;
-    padding: 50rpx;
+    margin-top: 65rpx;
 }
 
 .textarea {
@@ -112,6 +111,14 @@ page {
 
 .button {
     margin-top: 50rpx;
+}
+
+.button-one {
+    margin-top: 25rpx;
+}
+
+.button-two {
+    margin-top: 25rpx;
 }
 
 /* 4 设置心得列表的样式 */
